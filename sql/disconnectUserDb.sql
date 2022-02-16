@@ -1,6 +1,6 @@
 declare @sql as varchar(20), @spid as int
 
-select @spid = min(spid)  from master..sysprocesses  where dbid = db_id('AOGC_PROD') 
+select @spid = min(spid)  from master..sysprocesses  where dbid = db_id('<databasename>') 
 and spid != @@spid    
 
 while (@spid is not null)
@@ -14,7 +14,7 @@ begin
     from 
         master..sysprocesses  
     where 
-        dbid = db_id('AOGC_PROD') 
+        dbid = db_id('<databasename>') 
         and spid != @@spid
 end 
 
